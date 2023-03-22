@@ -3,10 +3,7 @@ import { without } from "lodash";
 import prisma from "@/libs/prisma";
 import serverAuth from "@/libs/serverAuth";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (req.method === "POST") {
       const { currentUser } = await serverAuth(req);
@@ -54,3 +51,5 @@ export default async function handler(
     res.status(400).end();
   }
 }
+
+export default handler;
